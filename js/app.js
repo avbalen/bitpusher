@@ -135,7 +135,7 @@
 
 
 	 function logIn() {
-		 client.login("google").then(refreshAuthDisplay, function(error){
+		 client.login("twitter").then(refreshAuthDisplay, function(error){
 			 alert(error);
 		 });
 	 }
