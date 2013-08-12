@@ -135,7 +135,8 @@
 
 
 	 function logIn() {
-		 client.login("microsoftaccount").then(refreshAuthDisplay, function(error){
+		 // twitter, facebook, google, microsoftaccount
+		 client.login("google").then(refreshAuthDisplay, function(error){
 			 alert(error);
 		 });
 	 }
