@@ -135,7 +135,7 @@
 
 
 	 function logIn() {
-		 client.login("microsoft").then(refreshAuthDisplay, function(error){
+		 client.login("microsoftaccount").then(refreshAuthDisplay, function(error){
 			 alert(error);
 		 });
 	 }
