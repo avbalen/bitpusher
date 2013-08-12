@@ -19,11 +19,9 @@
 	 channel.bind( 'delete', deleteItem );
 
 	 function initTodoItems() {
-
 		 var query = todoItemTable;
 		 query.read().then(function(todoItems) {
 			 listItems = $.map(todoItems, createItem);
-
 			 $('#todo-items').empty().append(listItems).toggle(listItems.length > 0);
 			 updateItemsCount();
 		 });
@@ -122,7 +120,42 @@
 		 });
 	 });
 
-	// On initial load, start by fetching the current data
-	 initTodoItems();
+	 
+	
+	 function refreshAuthDisplay() {
+		 var isLoggedIn = client.currentUser !== null;
+		 $("#logged-in").toggle(isLoggedIn);
+		 $("#logged-out").toggle(!isLoggedIn);
 
+		 if (isLoggedIn) {
+			 $("#login-name").text(client.currentUser.userId);
+			 initTodoItems();
+		 }
+	 }
+
+
+	 function logIn() {
+		 client.login("facebook").then(refreshAuthDisplay, function(error){
+			 alert(error);
+		 });
+	 }
+
+
+	 function logOut() {
+		 client.logout();
+		 refreshAuthDisplay();
+		 $('#summary').html('<strong>You must login to access data.</strong>');
+	 }
+
+
+	 // On page init, fetch the data and set up event handlers
+	 refreshAuthDisplay();
+	 $('#summary').html('<strong>You must login to access data.</strong>');          
+	 $("#logged-out button").click(logIn);
+	 $("#logged-in button").click(logOut);
+	 // If the user is logged in, start by fetching the current data
+	 if (client.currentUser !== null) {
+		 initTodoItems();
+	 }
+	 
 });
