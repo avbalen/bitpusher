@@ -19,11 +19,9 @@
 	 channel.bind( 'delete', deleteItem );
 
 	 function initTodoItems() {
-
 		 var query = todoItemTable;
 		 query.read().then(function(todoItems) {
 			 listItems = $.map(todoItems, createItem);
-
 			 $('#todo-items').empty().append(listItems).toggle(listItems.length > 0);
 			 updateItemsCount();
 		 });
@@ -131,7 +129,7 @@
 
 		 if (isLoggedIn) {
 			 $("#login-name").text(client.currentUser.userId);
-			 refreshTodoItems();
+			 initTodoItems();
 		 }
 	 }
 
