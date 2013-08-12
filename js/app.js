@@ -135,13 +135,14 @@
 
 
 	 function logIn() {
-		 client.login("twitter").then(refreshAuthDisplay, function(error){
+		 client.login("microsoft").then(refreshAuthDisplay, function(error){
 			 alert(error);
 		 });
 	 }
 
 
 	 function logOut() {
+		 $('#todo-items').empty();		 
 		 client.logout();
 		 refreshAuthDisplay();
 		 $('#summary').html('<strong>You must login to access data.</strong>');
