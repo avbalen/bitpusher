@@ -1,7 +1,7 @@
 ﻿<!DOCTYPE html>
 <html>
     <head>
-        <title>Sample: get started with data</title>
+        <title>Bitpusher</title>
         <link rel='stylesheet' href='styles.css' />
         <!--[if lt IE 9]><script src="http://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.6.1/html5shiv.js"></script><![endif]-->
     </head>
@@ -9,9 +9,15 @@
         <div id='wrapper'>
             <article>
                 <header>
-                    <h2>Windows Azure</h2>
-                    <h1>Mobile Services</h1>
-
+                    <h1>Bitpusher</h1>
+			<div id="logged-in">
+			    You are logged in as <span id="login-name"></span>.
+			    <button id="log-out">Log out</button>
+			</div>
+			<div id="logged-out">
+			    You are not logged in.
+			    <button>Log in</button>
+			</div>
                     <form id='add-item'>
                         <button type='submit'>Add</button>
                         <div><input type='text' id='new-item-text' placeholder='Enter new task' /></div>
@@ -22,11 +28,6 @@
                 <p id='summary'>Loading...</p>
             </article>
 
-            <footer>
-                <a href='http://www.windowsazure.com/en-us/develop/mobile/'>
-                    Learn more about Windows Azure Mobile Services
-                </a>
-            </footer>
         </div>
 
         <script src='http://code.jquery.com/jquery-1.9.0.min.js'></script>
